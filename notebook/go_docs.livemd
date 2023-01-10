@@ -1,0 +1,45 @@
+# Untitled notebook
+
+## Section: EPIC0001
+
+### Server
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+╭─user───❯ @root: josemartinez 
+┣─system─❯ on MacBook-Pro  
+…ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
+╰─cmd────❯  took 23m36s ✗ go run main.go
+product-api2023/01/10 14:38:28 Hola MUndo•..
+^C2023/01/10 14:39:01 Received terminate, graceful shutdown interrupt
+2023/01/10 14:39:01 http: Server closed
+exit status 1
+
+╭─user───❯ @root: josemartinez 
+┣─system─❯ on MacBook-Pro  
+…ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
+╰─cmd────❯  took 1m3s ✗ 
+```
+
+### curl `API` calls
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+╭─user───❯ @root: josemartinez 
+┣─system─❯ on MacBook-Pro  
+…ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
+╰─cmd────❯  took 19ms ﬌ curl localhost:9090 -d 'Jose'
+Hello Jose
+
+╭─user───❯ @root: josemartinez 
+┣─system─❯ on MacBook-Pro  
+…ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
+╰─cmd────❯  took 18ms ﬌ curl localhost:9090/goodbye
+Byee!!⏎                                                       
+╭─user───❯ @root: josemartinez 
+┣─system─❯ on MacBook-Pro  
+…ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
+╰─cmd────❯  took 14ms ﬌  
+```
