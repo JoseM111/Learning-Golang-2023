@@ -43,3 +43,49 @@ Byee!!⏎
 …ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
 ╰─cmd────❯  took 14ms ﬌  
 ```
+
+<!-- livebook:{"break_markdown":true} -->
+
+### using struct tags & calling a get request with `omitted` `struct tags`
+
+#### Starting the server
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+╭─user───❯ @root: josemartinez 
+┣─system─❯ on MacBook-Pro  
+…ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
+╰─cmd────❯  took 38m4s ✗ go run main.go
+product-api2023/01/11 13:06:07 
+Starting server on port: http://localhost:9090/
+```
+
+#### calling the `endpoint` with a `GET request` in `curl`
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+╭─user───❯ @root: josemartinez 
+┣─system─❯ on MacBook-Pro  
+…ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
+╰─cmd────❯  took 39ms ﬌ curl localhost:9090 | jq
+  
+[
+  {
+    "id": 1,
+    "name": "Latte",
+    "description": "Frothy milky coffee",
+    "price": 2.45,
+    "sku": "abc123"
+  },
+  {
+    "id": 2,
+    "name": "Espresso",
+    "description": "Short & strong coffee with milk",
+    "price": 1.99,
+    "sku": "fjd34"
+  }
+]
+
+```

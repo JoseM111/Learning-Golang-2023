@@ -12,23 +12,24 @@ import (
 )
 
 func main() {
+	// logger
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
+	
 	// handlers
-	helloHandler := handlers.NewHello(l)
-	goodbyeHandler := handlers.NewGoodbye(l)
+	productHandler := handlers.NewProducts(l)
 	
 	// register handler as my service
 	serveMux := NewServeMux()
-	serveMux.Handle("/", helloHandler)
-	serveMux.Handle("/goodbye", goodbyeHandler)
+	serveMux.Handle("/", productHandler)
 	
 	// creating our own server
 	server := &Server{
 		Addr:         ":9090",
 		Handler:      serveMux,
+		ErrorLog:     l,
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
 		IdleTimeout:  120 * time.Second,
-		ReadTimeout:  1 * time.Second,
-		WriteTimeout: 1 * time.Second,
 	}
 	
 	/*
@@ -38,9 +39,17 @@ func main() {
 	*/
 	// won't block code because it is wrapped in a go function
 	go func() {
+		const portURL = "http://localhost:9090/"
+		
+		l.Printf("\nStarting server on port: %s", portURL)
 		err := server.ListenAndServe()
 		if err != nil {
-			log.Fatal(err)
+			l.Printf("Error starting server: %s\n", err)
+			// Exit causes the current program to exit with the given status code.
+			// Conventionally, code zero indicates success, non-zero an error.
+			// The program terminates immediately;
+			// deferred functions are not run.
+			os.Exit(1)
 		}
 	}()
 	
@@ -50,7 +59,11 @@ func main() {
 	signal.Notify(signalChannel, os.Kill)
 	sig := <-signalChannel
 	log.Println("Received terminate, graceful shutdown", sig)
+	
 	// gracefully shutdown
 	timeOutContext, _ := context.WithTimeout(context.Background(), 30*time.Second)
-	_ = server.Shutdown(timeOutContext)
+	err := server.Shutdown(timeOutContext)
+	if err != nil {
+		return
+	}
 }
