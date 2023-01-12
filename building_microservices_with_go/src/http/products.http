@@ -1,0 +1,13 @@
+# Send POST request to Products
+POST http://localhost:9090
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "tea",
+  "description": "a nice cup of tea"
+}
+
+### GET request from Products
+GET localhost:9090
+Content-Type: application/json
