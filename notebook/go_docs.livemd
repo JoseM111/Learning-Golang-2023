@@ -69,8 +69,7 @@ Starting server on port: http://localhost:9090/
 ╭─user───❯ @root: josemartinez 
 ┣─system─❯ on MacBook-Pro  
 …ith_go/src via  v1.19.4 features/EPIC0001-devbranch ≡ +2 ~3 
-╰─cmd────❯  took 39ms ﬌ curl localhost:9090 | jq
-  
+╰─cmd────❯  took 39ms ﬌ curl --no-progress-meter localhost:9090 | jq
 [
   {
     "id": 1,
