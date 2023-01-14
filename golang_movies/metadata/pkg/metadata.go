@@ -1,5 +1,7 @@
 package model
 
+// ====================================================
+
 // Metadata defines the movie metadata.
 type Metadata struct {
 	ID          string `json:"id"`

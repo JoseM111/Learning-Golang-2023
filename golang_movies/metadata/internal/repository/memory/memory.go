@@ -27,9 +27,9 @@ func New() *Repository {
 	}
 }
 
-// =============================================
+// ====================== CRUD-FUNCTIONS =======================
 
-// Get retrieves movie metadata for by movie.
+// Get retrieve's movie metadata for by movie.
 func (repo *Repository) Get(_ Context, id string) (*model.Metadata, error) {
 	repo.RLock()
 	// undo a single RLock call
